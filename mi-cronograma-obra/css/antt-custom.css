@@ -1,0 +1,51 @@
+/* Estilos para el diagrama de Gantt */
+.gantt-container {
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    padding: 10px;
+    background: white;
+}
+
+.gantt .bar {
+    rx: 4px;
+    ry: 4px;
+}
+
+.gantt .bar.critical {
+    fill: var(--danger-color);
+}
+
+.gantt .bar.completed {
+    fill: var(--success-color);
+}
+
+.gantt .bar.in-progress {
+    fill: var(--secondary-color);
+}
+
+.gantt .bar.planned {
+    fill: #a0a0a0;
+}
+
+.gantt .bar-progress {
+    fill: rgba(255, 255, 255, 0.5);
+}
+
+.gantt-popup {
+    padding: 10px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-size: 14px;
+}
+
+.gantt-popup h5 {
+    margin: 0 0 5px 0;
+    color: var(--primary-color);
+}
+
+.gantt-popup p {
+    margin: 2px 0;
+}

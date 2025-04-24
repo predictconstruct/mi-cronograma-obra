@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Cronogramas de Obra</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div id="help-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Ayuda</h3>
+        <p>Formato requerido para el archivo Excel:</p>
+        <ul>
+            <li>Columnas obligatorias: Actividad, Fecha Inicio, Fecha Fin, Duración, Avance</li>
+            <li>Formato de fechas: DD/MM/AAAA</li>
+        </ul>
+    </div>
+</div>
+    <header>
+        <div class="container">
+            <h1>Gestor de Cronogramas de Obra</h1>
+            <p>Carga, analiza y ajusta tu cronograma de proyecto</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="upload-section" class="card">
+            <h2><i class="fas fa-upload"></i> Cargar Cronograma</h2>
+            <form id="upload-form">
+                <div class="form-group">
+                    <label for="project-name">Nombre del Proyecto:</label>
+                    <input type="text" id="project-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="target-date">Fecha Objetivo de Finalización:</label>
+                    <input type="date" id="target-date" required>
+                </div>
+                
+                <div class="form-group file-upload">
+                    <label for="schedule-file">Seleccionar archivo:</label>
+                    <input type="file" id="schedule-file" accept=".xlsx,.mpp" required>
+                    <div class="file-info">Formatos aceptados: .xlsx (Excel) o .mpp (MS Project)</div>
+                </div>
+                
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-cloud-upload-alt"></i> Procesar Cronograma
+                </button>
+            </form>
+        </section>
+
+        <section id="results-section" class="hidden">
+            <div class="grid-container">
+                <div class="card summary-card">
+                    <h2><i class="fas fa-info-circle"></i> Resumen del Proyecto</h2>
+                    <div id="project-summary"></div>
+                </div>
+                
+                <div class="card alerts-card">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Alertas</h2>
+                    <div id="alerts-container"></div>
+                </div>
+            </div>
+            
+            <div class="card gantt-card">
+                <h2><i class="fas fa-chart-bar"></i> Diagrama de Gantt</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="original">Original</button>
+                    <button class="tab-btn" data-tab="adjusted">Ajustado</button>
+                </div>
+                <div id="gantt-container"></div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="export-btn" class="btn-secondary">
+                    <i class="fas fa-file-export"></i> Exportar Cronograma Ajustado
+                </button>
+                <button id="new-analysis-btn" class="btn-secondary">
+                    <i class="fas fa-redo"></i> Realizar Nuevo Análisis
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Sistema de Gestión de Cronogramas de Obra - Versión 1.0</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/frappe-gantt@0.6.2/dist/frappe-gantt.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
